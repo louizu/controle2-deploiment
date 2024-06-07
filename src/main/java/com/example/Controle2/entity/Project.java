@@ -1,6 +1,7 @@
 package com.example.Controle2.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 
@@ -18,6 +19,8 @@ public class Project {
     private double budget;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    @JsonManagedReference
+
     private List<ProjectEmployee> projectEmployees;
 
     // Getters et setters

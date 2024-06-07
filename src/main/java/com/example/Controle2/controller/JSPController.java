@@ -24,13 +24,11 @@ public class JSPController {
 
     @GetMapping("/assignEmployee")
     public String showAssignEmployeeForm(Model model) {
-        List<Employee> managers = employeeService.getAllEmployees().stream()
-                .filter(e -> e.getPost() == Post.MANAGER)
-                .collect(Collectors.toList());
+        List<Employee> employees = employeeService.getAllEmployees();
         List<Project> projects = projectService.getAllProjects();
-        model.addAttribute("managers", managers);
+        model.addAttribute("employees", employees);
         model.addAttribute("projects", projects);
-        return "assignEmployee";
+        return "assignEmployee.jsp";
     }
 
     @PostMapping("/assignEmployee")
@@ -40,7 +38,7 @@ public class JSPController {
         if (employee != null && project != null) {
             employeeService.assignEmployeeToProject(employee.getName(), project.getName(), implication);
         }
-        return "redirect:/assignEmployee";
+        return "redirect:/employees";
     }
 }
 

@@ -1,31 +1,35 @@
 package com.example.Controle2.entity;
 
-
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
 public class ProjectEmployee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    @EmbeddedId
+    private ProjectEmployeeId id;
 
     @ManyToOne
+    @JsonBackReference
+    @MapsId("projectId")
     @JoinColumn(name = "project_id")
     private Project project;
 
     @ManyToOne
+    @JsonBackReference
+    @MapsId("employeeId")
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
     private double implication; // Pourcentage d'implication
 
     // Getters et setters
-    public Long getId() {
+
+    public ProjectEmployeeId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ProjectEmployeeId id) {
         this.id = id;
     }
 

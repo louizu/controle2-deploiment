@@ -8,15 +8,15 @@
 <body>
 <h2 style="text-align: center;">Employee Affectation</h2>
 <div style="text-align: center;">
-    <a href="/employees">Employees</a> | <a href="/">Back to Home</a>
+    <a href="/employees">Employees</a> | <a href="/assignEmployee">Back to Home</a>
 </div>
 <hr/>
 <div style="text-align: center;">
     <form action="assignEmployee" method="post">
         <label for="employeeId">Employee Name:</label>
         <select id="employeeId" name="employeeId">
-            <c:forEach var="manager" items="${managers}">
-                <option value="${manager.id}">${manager.name}</option>
+            <c:forEach var="employee" items="${employees}">
+                <option value="${employee.id}">${employee.name}</option>
             </c:forEach>
         </select>
         <br/><br/>

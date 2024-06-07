@@ -21,7 +21,7 @@ public class ThymeleafController {
     public String listEmployees(Model model) {
         List<Employee> employees = employeeService.getAllEmployees();
         model.addAttribute("employees", employees);
-        return "employees";
+        return "employees.html";
     }
 
     @PostMapping("/removeEmployee")
